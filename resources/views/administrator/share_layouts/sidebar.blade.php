@@ -28,7 +28,7 @@
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="{{route('browserRole')}}" class="sidebar-link">
+                            <a href="{{route('index.role')}}" class="sidebar-link">
                                 <span class="hide-menu"> Vai trò quản trị </span>
                             </a>
                         </li>
@@ -41,7 +41,7 @@
                     </a>
                     <ul aria-expanded="false" class="collapse first-level base-level-line">
                         <li class="sidebar-item">
-                            <a href="{{route('company.index')}}" class="sidebar-link">
+                            <a href="{{route('index.company')}}" class="sidebar-link">
                                 <span class="hide-menu"> Danh sách công ty </span>
                             </a>
                         </li>
@@ -75,17 +75,81 @@
                 </li>
                 <li class="sidebar-item">
                     <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
-                        <i  class="icon icon-settings"></i>
-                        <span class="hide-menu"> Cài đặt chung</span>
+                        <i class="fa fa-language" aria-hidden="true"></i>
+                        <span class="hide-menu"> Quản lý ngôn ngữ</span>
                     </a>
                     <ul aria-expanded="false" class="collapse first-level base-level-line">
                         <li class="sidebar-item">
-                            <a href="{{route('browser.web')}}" class="sidebar-link">
-                                <span class="hide-menu"> Cài đặt </span>
+                            <a href="{{route('language-admin')}}" class="sidebar-link">
+                                <span class="hide-menu"> Danh sách ngôn ngữ  </span>
                             </a>
                         </li>
                     </ul>
                 </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                        <i class="fa fa-briefcase"></i>
+                        <span class="hide-menu"> Quản lý Ngành nghề</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse first-level base-level-line">
+                        <li class="sidebar-item">
+                            <a href="{{route('job-category')}}" class="sidebar-link">
+                                <span class="hide-menu"> Danh sách Ngành nghề  </span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                        <i class="fas fa-money-bill-alt"></i>
+                        <span class="hide-menu"> Quản lý Thanh Toán</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse first-level base-level-line">
+                        <li class="sidebar-item">
+                            <a href="{{route('payment-admin')}}" class="sidebar-link">
+                                <span class="hide-menu"> Danh sách Thanh toán  </span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                        <i class="fa fa-location-arrow"></i>
+                        <span class="hide-menu"> Quản lý Khu vực</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse first-level base-level-line">
+                        <li class="sidebar-item">
+                            <a href="{{route('zones-admin')}}" class="sidebar-link">
+                                <span class="hide-menu"> Danh sách khu vực </span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="{{route('add-zones')}}" class="sidebar-link">
+                                <span class="hide-menu"> Tạo mới khu vực </span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-item"> 
+                    <a class="sidebar-link sidebar-link" href="{{route('browser.web')}}" aria-expanded="false">
+                        <i class="fas fa-address-card"></i>
+                        <span class="hide-menu">Giới thiệu website</span>
+                    </a>
+                </li>
+                <li class="sidebar-item"> 
+                    <a class="sidebar-link sidebar-link" href="{{route('contact.index')}}" aria-expanded="false">
+                        <i class="fas fa-address-book"></i>
+                        <span class="hide-menu">Liên hệ </span>
+                    </a>
+                </li>
+                <li class="sidebar-item"> 
+                    <a class="sidebar-link sidebar-link" href="{{route('browser.web')}}" aria-expanded="false">
+                        <i  class="icon icon-settings"></i>
+                        <span class="hide-menu">Cài đặt chung</span>
+                    </a>
+                </li>
+
 
             </ul>
         </nav>

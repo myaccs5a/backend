@@ -45,8 +45,8 @@
                                             @endif
                                         </td>
                                         <td>
-                                          <a class="btn btn-info" href="{{route('show.company_user',['id' => $company_user->id])}}"><i class="fas fa-eye " style="padding-right:5px;"></i>Chi tiết</a>
-                                          <a class="btn btn-success" href="{{route('edit.company_user',['id' => $company_user->id])}}"><i class="fas fa-edit"style="padding-right:5px;"></i>Sửa</a>
+                                          <a class="btn btn-info" href="{{route('show.company',['id' => $company_user->id])}}"><i class="fas fa-eye " style="padding-right:5px;"></i>Chi tiết</a>
+                                          <a class="btn btn-success" href="{{route('edit.company',['id' => $company_user->id])}}"><i class="fas fa-edit"style="padding-right:5px;"></i>Sửa</a>
                                         </td>
                                     </tr>
                                     @endforeach

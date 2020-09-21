@@ -7,14 +7,18 @@ use App\Models\Role;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-
+use Gate;
 class AdminController extends Controller
 {
     //
     public function index()
     {
-        $admin = Admin::paginate(5);
+//        dd(Gate:('admin_list'));
+//       $this->authorize('admin_list');
+
+        $admin = Admin::paginate(2);
         return view('administrator.pages.admin.index',compact('admin'));
+        // Gate::authorize('view-settings', $admin);
     }
 
 
@@ -27,8 +31,6 @@ class AdminController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request);
-
         if ($request->isMethod('post')){
             \DB::beginTransaction();
             try {
@@ -97,7 +99,7 @@ class AdminController extends Controller
                 unlink($userdestroy->avatar);
                 $userdestroy->delete();
                 \DB::commit();
-                return redirect()->route('browserAdmin')->with('success','Tạo mới quản trị thành công');
+                return redirect()->route('browserAdmin')->with('success','Xóa tài quản trị thành công');
             }catch (\Exception $e) {
                 \DB::rollback();
                 return redirect()->route('browserAdmin')->with('error', 'Đã có lỗi sảy ra, vui lòng thử lại sau');

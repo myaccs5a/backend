@@ -35,8 +35,8 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-
                                 @foreach ($admin as $key => $items)
+
                                     <tr>
                                         <td>{{$items->name}}</td>
                                         <td>{{$items->email}}</td>
@@ -44,9 +44,7 @@
                                             <img src="{{asset($items->avatar)}}" alt="Avatar" class="rounded-circle">
                                         </td>
                                         <td>
-                                            @foreach ($items->roles as $role)
-                                                <span class="btn btn-primary">{{ $role->name }}</span>
-                                            @endforeach
+                                            <span class="btn bg-primary text-dark">{{$items->role->display_name}}</span>
                                         </td>
 
                                         <td>

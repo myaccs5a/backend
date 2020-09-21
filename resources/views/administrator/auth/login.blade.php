@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Administrator | Login </title>
+<title>Quản trị | Đăng nhập </title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -11,13 +11,11 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('administrator/auth/fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
 <!--===============================================================================================-->
-
 	<link rel="stylesheet" type="text/css" href="{{asset('administrator/auth/css/util.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('administrator/auth/css/main.css')}}">
 <!--===============================================================================================-->
 </head>
 <body>
-
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
@@ -27,28 +25,22 @@
 						Đăng Nhập Admin
 					</span>
 
-					<span class="txt1 p-b-11">
-						Email
-					</span>
-					<div class="wrap-input100 validate-input m-b-36">
-						<input class="input100" type="text" name="email" >
-						<span class="focus-input100"></span>
+                    <span class="m-b-10 text-danger" style="display: block;">{{$errors->first('email')}}</span>
+					<div class="wrap-input100 m-b-36">
+						<input class="input100" type="text" name="email" placeholder="Địa chỉ email">
 					</div>
 
-					<span class="txt1 p-b-11">
-						Mật khẩu
-					</span>
-					<div class="wrap-input100 validate-input m-b-12">
+                    <span class="m-b-10 text-danger">{{$errors->first('password')}}</span>
+					<div class="wrap-input100 m-b-12">
 						<span class="btn-show-pass">
 							<i class="fa fa-eye"></i>
 						</span>
-						<input class="input100" type="password" name="password" >
-						<span class="focus-input100"></span>
+						<input class="input100" type="password" name="password"  placeholder="Mật khẩu">
 					</div>
 
 					<div class="flex-sb-m w-full p-b-48">
 						<div class="contact100-form-checkbox">
-							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+							<input class="input-checkbox100"  type="checkbox" name="remember-me">
 							<label class="label-checkbox100" for="ckb1">
 								Nhớ đăng nhập
 							</label>

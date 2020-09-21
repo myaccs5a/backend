@@ -15,15 +15,20 @@ class Admin extends Authenticatable
 
 
     protected $fillable = [
-        'name', 'email', 'password','avatar','admin_role_id','email_verified_at',
+        'name', 'email', 'password','avatar','email_verified_at',
     ];
 
     protected $hidden = [
-        'password', 'remember_token','admin_role_id'
+        'password', 'remember_token','role_id'
     ];
 
-    public function roles()
+    public function role()
     {
-        return $this->belongsToMany('App\Models\Role', 'admin_role', 'role_id', 'admin_id');
+        return $this->belongsTo('App\Models\Role');
     }
+
+    public function hasPermisson(Permission $permission){
+         return !! optional(optional($this->role)->permissions)->contains($permission);
+    }
+
 }

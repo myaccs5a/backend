@@ -19,7 +19,7 @@ class AdminCheckLogin
 
         //kiểm tra đăng  nhập phía admin
          if (!Auth::guard('admin')->check()) {
-             return redirect()->route('login');
+             return redirect()->route('login.admin');
          }
          else {
              return $next($request);

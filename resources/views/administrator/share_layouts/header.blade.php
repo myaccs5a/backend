@@ -12,9 +12,9 @@
                 <a href="index.html">
                     <b class="logo-icon">
                         <!-- Dark Logo icon -->
-                        <img src="{{asset('administrator/images/admins/logo-icon.png')}}" alt="homepage" class="dark-logo" />
+                        <img src="{{asset('/images/setting/logo.png')}}" alt="homepage" class="dark-logo img-thumbnail" />
                         <!-- Light Logo icon -->
-                        <img src="{{asset('administrator/assets/images/logo-icon.png')}}" alt="homepage" class="light-logo" />
+                        <img src="{{asset('/images/setting/logo.png')}}" alt="homepage" class="light-logo img-thumbnail" />
                     </b>
                     <!--End Logo icon -->
                 </a>

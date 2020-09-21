@@ -13,8 +13,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
+// use App\Models\Role;
+// use App\Models\Permission;
+// Route::get('test', function () {
+//   dd(Role::find(1)->load('permissions'));
+//   dd(Permission::find(1)->load('role'));
+// });
 Route::get('','HomeController@getList' );
 Route::get('/index','HomeController@getList')->name('home');
 

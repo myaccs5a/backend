@@ -54,7 +54,5 @@
 </script>
 @yield('footer')
 @yield('javascript')
-
-
 </body>
 </html>

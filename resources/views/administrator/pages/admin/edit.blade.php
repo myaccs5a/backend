@@ -12,27 +12,36 @@
                 <form action="{{route('storeAdmin')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <lable>Tên người dùng</lable>
+                        <label>Tên người dùng</label>
                         <input type="text" name="name" class="form-control" value="{{$account->name}}">
                     </div>
                     <div class="form-group">
-                        <lable>Email</lable>
+                        <label>Email</label>
                         <input type="text" name="email" class="form-control" value="{{$account->email}}">
                     </div>
                     <div class="form-group">
-                        <lable>Ảnh đại diện</lable>
-                        <input type="file" accept="image/*" onchange="loadFile(event)" name="avatar">
-                        <img class="rounded-circle" id="output" src="{{asset($account->avatar)}}"/>
+                        <label>Mật khẩu mới</label>
+                        <input type="password" name="password" class="form-control" >
                     </div>
                     <div class="form-group">
-                        <lable>Vai trò</lable>
+                        <label>Xác nhận mật khẩu mới</label>
+                        <input type="password" name="password" class="form-control" >
+                        <span></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Ảnh đại diện</label>
+                        <input type="file" accept="image/*" onchange="loadFile(event)" name="avatar">
+                        <img style="display:block;width:100px;height:100px;border-radius:100%;" id="output" src="{{asset($account->avatar)}}"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Vai trò</label>
                         <select name="roles" class="form-control">
                             @foreach($roles as $items)
-                                <option value="{{$items->id}}">{{$items->role_name}}</option>
+                                <option value="{{$items->id}}">{{$items->display_name}}</option>
                             @endforeach
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-success">Lưu</button>
+                    <button type="submit" class="btn btn-success">update</button>
                 </form>
             </div>
         </div>
@@ -40,9 +49,9 @@
 </div>
 </div>
 @endsection
-@section('script')
+@section('javascript')
 <script>
-  var loadFile = function(event) {
+  var loadFile = function loadFile(event) {
     var output = document.getElementById('output');
     output.src = URL.createObjectURL(event.target.files[0]);
     output.onload = function() {

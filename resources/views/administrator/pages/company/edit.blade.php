@@ -9,40 +9,40 @@
         <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{route('update.company_user',['id' => $company_users->id])}}" method="POST"
+                    <form action="{{route('update.company',['id' => $company_users->id])}}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <lable>Tên công ty</lable>
+                                    <label>Tên công ty</label>
                                     <input type="text" name="name" readonly value="{{$company_users->name}}"
                                         class="form-control">
                                     <input type="text" name="id" hidden value="{{$company_users->id}}"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <lable>Email</lable>
+                                    <label>Email</label>
                                     <input type="text" name="email" readonly value="{{$company_users->email}}"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <lable>Điện thoại</lable>
+                                    <label>Điện thoại</label>
                                     <input type="text" name="phone" readonly value="{{$company_users->phone}}"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <lable>Địa chỉ</lable>
+                                    <label>Địa chỉ</label>
                                     <input type="text" name="address" readonly value="{{$company_users->address}}"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <lable>Quy mô</lable>
+                                    <label>Quy mô</label>
                                     <input type="text" name="scales" readonly value="{{$company_users->scales}}"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <lable>Mô tả</lable>
+                                    <label>Mô tả</label>
                                     <input type="text" name="desc" readonly value="{{$company_users->desc}}"
                                         class="form-control">
                                 </div>
@@ -50,19 +50,19 @@
                             <div class="col-6">
 
 
-                                <lable>Logo</lable>
+                                <label>Logo</label>
                                 <div class="form-group">
                                     <img src="{{asset('administrator/assets/images/users/4.jpg')}}" width="260px"
                                         alt="">
                                     <!-- <input type="file" name="avatar" class="form-control"> -->
                                 </div>
                                 <div class="form-group">
-                                    <lable>Website</lable>
+                                    <label>Website</label>
                                     <input type="text" name="website" readonly value="{{$company_users->website}}"
                                         class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <lable>Trạng thái</lable>
+                                    <label>Trạng thái</label>
                                     <select name="status" class="form-control">
                                         <option @if($company_users->status == '1') selected @endif value="1">Hoạt động
                                         </option>
@@ -75,7 +75,7 @@
 
 
 
-                        <a class="btn btn-info" href="{{route('company.index')}}">Quay về</a>
+                        <a class="btn btn-info" href="{{route('index.company')}}">Quay về</a>
                         <button class="btn btn-success float-right" type="submit">Gửi</button>
                     </form>
                 </div>

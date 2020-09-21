@@ -24,8 +24,10 @@ Route::group(['prefix' => '/','namespace'=>'Administrator','middleware'=>'AdminC
 
     Route::group(['prefix' => 'role'], function () {
 
-        Route::get('/','RoleController@index')->name('browserRole');
-        Route::get('/create','RoleController@create')->name('role.create');
+        Route::get('/','RoleController@index')->name('index.role');
+        Route::get('/create','RoleController@create')->name('create.role');
+        Route::get('/edit/{id}','RoleController@edit')->name('edit.role');
+        Route::post('/update/{id}','RoleController@update')->name('update.role');
         Route::post('/store','RoleController@store')->name('store.role');
         Route::post('/destroy-role/{id}','RoleController@destroyRole')->name('destroy.role');
     });
@@ -44,10 +46,10 @@ Route::group(['prefix' => '/','namespace'=>'Administrator','middleware'=>'AdminC
     });
     Route::group(['prefix' => 'company'], function () {
         //route show company user
-        Route::get('/','CompanyUserController@index')->name('company.index');
-        Route::get('/show/{id}','CompanyUserController@show')->name('show.company_user');
-        Route::get('/edit/{id}','CompanyUserController@edit')->name('edit.company_user');
-        Route::post('/update/{id}','CompanyUserController@update')->name('update.company_user');
+        Route::get('/','CompanyUserController@index')->name('index.company');
+        Route::get('/show/{id}','CompanyUserController@show')->name('show.company');
+        Route::get('/edit/{id}','CompanyUserController@edit')->name('edit.company');
+        Route::post('/update/{id}','CompanyUserController@update')->name('update.company');
 
     });
     Route::group(['prefix' => 'user'], function () {
@@ -74,6 +76,42 @@ Route::group(['prefix' => '/','namespace'=>'Administrator','middleware'=>'AdminC
         Route::get('/edit/{id}','WebSettingController@edit')->name('edit.web');
         Route::post('/update/{id}','WebSettingController@update')->name('update.web');
     });
+    Route::group(['prefix' => 'language'], function () {
+        //route show language
+        Route::get('/','LanguageController@getLanguage')->name('language-admin');
+        Route::get('/add-language','LanguageController@addLanguage')->name('add-language');
+        Route::post('/save-language','LanguageController@saveLanguage')->name('save-language');
+        Route::get('/delete-language/{id}','LanguageController@getDeleteLanguage');
+        Route::get('/edit-language/{id}','LanguageController@getEditLanguage');
+        Route::post('/edit-language/{id}','LanguageController@postEditLanguage');
+
+    });
+    Route::group(['prefix' => 'job-category'], function () {
+        //route show job-category
+        Route::get('/','JobCategoryController@getJobCategory')->name('job-category');
+        Route::get('/add-job-category','JobCategoryController@addJobCategory')->name('add-job-category');
+        Route::post('/save-job-category','JobCategoryController@saveJobCategory')->name('save-job-category');
+        Route::get('/delete-job-category/{id}','JobCategoryController@getDeleteJobCategory');
+        Route::get('/edit-job-category/{id}','JobCategoryController@getEditJobCategory');
+        Route::post('/edit-job-category/{id}','JobCategoryController@postEditJobCategory');
+    });
+    Route::group(['prefix' => 'payment'], function () {
+        //route show payment
+        Route::get('/','PaymentController@getPayment')->name('payment-admin');
+        Route::get('/delete-payment/{id}','PaymentController@getDeletePayment');
+    });
+    Route::group(['prefix' => 'zones'], function () {
+        //route show zones
+        Route::get('/','ZonesController@getZones')->name('zones-admin');
+        Route::get('/add-zones','ZonesController@addZones')->name('add-zones');
+        Route::post('/save-zones','ZonesController@saveZones')->name('save-zones');
+        Route::get('/delete-zones/{id}','ZonesController@getDeleteZones');
+        Route::get('/edit-zones/{id}','ZonesController@getEditZones');
+        Route::post('/edit-zones/{id}','ZonesController@postEditZones');
+    });
+    Route::group(['prefix' => 'contact'], function () {
+        //route show zones
+        Route::get('/','ContactController@index')->name('contact.index');
+    });
 
 });
-Route::get('/test');

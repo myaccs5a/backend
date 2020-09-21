@@ -15,7 +15,6 @@
                     <li><a href="{{route('get.all.jobs')}}">Việc Làm <span style="color:#ffffff;background:orangered;padding: 2px;border-radius: 5px;text-transform: none">HOT</span></a></li>
                     <li><a href="listing.html">Quản Lý CV</a></li>
                     <li><a href="{{route('companys')}}">Công Ty</a></li>
-                    s
                     </li>
                 </ul>
             </div>

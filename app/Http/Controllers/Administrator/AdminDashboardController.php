@@ -10,11 +10,13 @@ class AdminDashboardController extends Controller
 {
     public function index()
     {
+
+
         $data['admin']=Admin::count();
         $data['company']=Admin::count();
         $data['user']=Admin::count();
         $data['job']=Admin::count();
-        
+
         return view('administrator.pages.dashboard',$data);
     }
 

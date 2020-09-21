@@ -4,17 +4,30 @@
     <title>Administrator | Role</title>
 @endsection()
 @section('main_content')
+<style>
+    #crn {
+        margin-bottom: 20px;
+    }
+
+    .avatar {
+        vertical-align: middle;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+</style>
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
+                <a href="{{route('create.role')}}" class="btn btn-success" id="crn">Tạo mới</a>
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class="bg-light text-dark">
                                 <tr>
+                                    <th>Tên khóa</th>
                                     <th>Tên quyền</th>
-                                    <th>Tên hiển thị</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -25,10 +38,8 @@
                                             <td>{{$items->name}}</td>
                                             <td>{{$items->display_name}}</td>
                                             <td>
-                                                <button class="btn btn-primary"  data-toggle="modal" data-target="#delete"><i class="fas fa-eye "></i>View</button>
-                                                <button class="btn btn-success"  data-toggle="modal" data-target="#delete"><i class="fas fa-edit"></i>Edit</button>
-                                                <button class="btn btn-danger"  data-catid={{$items->id}} data-toggle="modal" data-target="#delete"><i class="fas fa-trash-alt"></i>Delete</button>
-
+                                                <button class="btn btn-success"><i class="fas fa-edit"></i><a href="{{route('edit.role',['id'=>$items->id])}}">Chỉnh sửa</a> </button>
+                                                <button class="btn btn-danger"  data-catid={{$items->id}} data-toggle="modal" data-target="#delete"><i class="fas fa-trash-alt"></i>Xóa</button>
                                             </td>
                                         </tr>
                                         @endforeach

@@ -12,27 +12,28 @@
                 <form action="{{route('storeAdmin')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <lable>Tên người dùng</lable>
+                        <label>Tên người dùng</label>
                         <input type="text" name="name" class="form-control">
                     </div>
                     <div class="form-group">
-                        <lable>Email</lable>
+                        <label>Email</label>
                         <input type="text" name="email" class="form-control">
                     </div>
                     <div class="form-group">
-                        <lable>Mật khẩu</lable>
+                        <label>Mật khẩu</label>
                         <input type="password" name="password" class="form-control">
                     </div>
                     <div class="form-group">
-                        <lable>Xác nhận mật khẩu</lable>
+                        <label>Xác nhận mật khẩu</label>
                         <input type="password" name="password_confirm" class="form-control">
                     </div>
                     <div class="form-group">
-                        <lable>Ảnh đại diện</lable>
-                        <input type="file" name="avatar" class="form-control">
+                        <label>Ảnh đại diện</label>
+                        <input type="file" accept="image/*" onchange="loadFile(event)" name="avatar">
+                        <img style="display:block;width:100px;height:100px;border-radius:100%;" id="output"/>
                     </div>
                     <div class="form-group">
-                        <lable>Vai trò</lable>
+                        <label>Vai trò</label>
                         <select name="roles" class="form-control">
                             @foreach($roles as $items)
                                 <option value="{{$items->id}}">{{$items->display_name}}</option>
@@ -47,5 +48,15 @@
 </div>
 </div>
 @endsection
+@section('javascript')
+<script>
+  var loadFile = function loadFile(event) {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output.src) // free memory
+    }
+  };
+</script>
 
 

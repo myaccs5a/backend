@@ -22,54 +22,47 @@ use Auth;
 session_start();
 class HomeController extends Controller
 {
-    // public function index(){
-    //   return view('pages.home.home');
-    // }
     public function getList(Request $request){
 
         $zones =Zones::all();
-        $joball = Job::All();
+        $joball = Job::all();
         $job = Job::where([
             ['status', '=', '1'],
             ['job_top', '=', '1'],
         ])->take(12)->get();
         $company = CompanyUser::all();
+
         if($user = Auth::user()){
-        $jobzone = Job::where('id_zone',$user->id_zone)->take(4)->get();
+            $jobzone = Job::where('id_zone',$user->id_zone)->take(4)->get();
         }
         else{
-        $jobzone = null;
+            $jobzone = null;
         }
-        //check IP//
+            $ip = $_SERVER['REMOTE_ADDR'];
+            if(getenv($_SERVER['REMOTE_ADDR']) == false){
+                $ip = '117.5.213.42';
+            }
+            $json   = file_get_contents( 'http://ip-api.com/php/'.$ip);
+            
+            $timezone = '';
+            if (!empty($json )) {
+                
+                $ipData = unserialize($json);
 
-                        $json   = file_get_contents( 'http://ip-api.com/json');
-                        $timezone = '';
-                        if (!empty($json )) {
-                            $ipData = json_decode( $json, true);
-                            if (!empty($ipData['timezone'])) {
-                                $timezoneout = $ipData['city'];
-                            }
-                        }
+                if (!empty($ipData['timezone'])) {
+                    $timezoneout = $ipData['city'];
+                }
+            }
+            $zone = Zones::all()->where('type', $timezoneout);
 
-                        $zone = Zones::All()->where('type', $timezoneout);
+            if ($zone[0]->type ==  "$timezoneout" ) {
+                $jobcc = Job::all()->where('id_zone',$zone[0]->id)->take(12);
+            }
+            else{
+                $jobcc = Job::all()->take(12);
+            }
 
-
-
-                            // dd($jobcc);
-
-                        if ($zone[0]->type ==  "$timezoneout" ) {
-
-                            $jobcc = Job::All()->where('id_zone',$zone[0]->id)->take(12);
-
-                        }
-                        else{
-                            $jobcc = Job::All()->take(12);
-                        }
-
-
-
-
-        //end//
+        //end if
         $jobuser = Job::all()->take(4);
         return view('pages.home.home',['job'=>$job,'jobuser'=> $jobuser,'user'=> $user,'zones'=> $zones,'jobzone'=>$jobzone,'company'=>$company,'jobcc'=>$jobcc,'joball'=>$joball]);
     }
@@ -88,8 +81,6 @@ class HomeController extends Controller
             ->where([
                 ['job_id', '=', $job->id],
                 ['user_id', '=', $user->id],
-
-
             ])
             ->first();
 
@@ -105,18 +96,11 @@ class HomeController extends Controller
             ->where([
                 ['job_id', '=', $job->id],
                 ['user_id', '=', $user->id],
-
-
             ])
             ->first();
-
         }else{
             $recruitment = null;
         }
-
-
-
-
         return view('pages.home.detail',compact('job','date','user','savetjob','recruitment','company'));
     }
 
@@ -195,9 +179,6 @@ class HomeController extends Controller
 
         return $user_ip_address=$request->ip();
         dd($user_ip_address);
-
-}
-
-
+    }
 
 }
